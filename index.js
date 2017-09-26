@@ -74,12 +74,10 @@ smarterClock.prototype.getDelta = function (callback) {
             var diff = tempServerTime - tempLocalTime;
             if (Math.abs(diff) < 1000) {
               this.delta.push(tempServerTime - tempLocalTime);
-            } else {
-                console.log('DIFF', diff);
             }
             //if callback passed in return current delta time
             if(callback) {
-            callback(diff)
+                callback(diff)
             }
         }
     }.bind(this))
