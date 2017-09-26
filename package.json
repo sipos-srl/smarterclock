@@ -1,0 +1,101 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@smarterservices/smarterclock@^1.1.1",
+        "scope": "@smarterservices",
+        "escapedName": "@smarterservices%2fsmarterclock",
+        "name": "@smarterservices/smarterclock",
+        "rawSpec": "^1.1.1",
+        "spec": ">=1.1.1 <2.0.0",
+        "type": "range"
+      },
+      "/app"
+    ]
+  ],
+  "_from": "@smarterservices/smarterclock@>=1.1.1 <2.0.0",
+  "_id": "@smarterservices/smarterclock@1.1.1",
+  "_inCache": true,
+  "_location": "/@smarterservices/smarterclock",
+  "_nodeVersion": "6.2.2",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/smarterclock-1.1.1.tgz_1469723731813_0.6217739463318139"
+  },
+  "_npmUser": {
+    "name": "jpiepkow",
+    "email": "jpiepkow@gmail.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@smarterservices/smarterclock@^1.1.1",
+    "scope": "@smarterservices",
+    "escapedName": "@smarterservices%2fsmarterclock",
+    "name": "@smarterservices/smarterclock",
+    "rawSpec": "^1.1.1",
+    "spec": ">=1.1.1 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@smarterservices/smarterclock/-/smarterclock-1.1.1.tgz",
+  "_shasum": "c552675218a7e27ee822600c30dca368618bb8ba",
+  "_shrinkwrap": null,
+  "_spec": "@smarterservices/smarterclock@^1.1.1",
+  "_where": "/app",
+  "author": {
+    "name": "jordan l piepkow"
+  },
+  "bugs": {
+    "url": "https://github.com/SmarterServices/smarterclock/issues"
+  },
+  "dependencies": {
+    "ntp-client": "^0.5.3"
+  },
+  "description": "store of delta values between ntp time and local time to get an accurate sync time",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "c552675218a7e27ee822600c30dca368618bb8ba",
+    "tarball": "https://registry.npmjs.org/@smarterservices/smarterclock/-/smarterclock-1.1.1.tgz"
+  },
+  "gitHead": "5c619dfd009cb999cb69e8538a43102941c4b312",
+  "homepage": "https://github.com/SmarterServices/smarterclock#readme",
+  "keywords": [
+    "ntp",
+    "clock",
+    "sync"
+  ],
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "jasonfill",
+      "email": "jasonfill@gmail.com"
+    },
+    {
+      "name": "jpiepkow",
+      "email": "jpiepkow@gmail.com"
+    },
+    {
+      "name": "sajid.sharlemin",
+      "email": "sajid@smarterservices.com"
+    },
+    {
+      "name": "smarterservicesdev",
+      "email": "jason@smarterservices.com"
+    }
+  ],
+  "name": "@smarterservices/smarterclock",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmarterServices/smarterclock.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.1.1"
+}
