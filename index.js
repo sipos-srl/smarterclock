@@ -12,7 +12,7 @@ var smarterClock = function (config) {
     //set current server using current server index
     this.currentServer = this.ntpServers[this.currentIndex];
     //tickrate for getting delta from ntp server
-    this.tickRate = config.syncDelay || 300;
+    this.tickRate = config.syncDelay || 60;
     // set the tickRate to milliseconds.
     this.tickRate = this.tickRate * 1000;
     //array containing delta values
@@ -30,6 +30,9 @@ smarterClock.prototype.shiftServer = function () {
     if (this.ntpServers[this.currentIndex + 1]) {
         this.currentIndex++;
         this.currentServer = this.ntpServers[this.currentIndex];
+    } else {
+        this.currentIndex = 0;
+        this.currentServer = this.ntpServers[this.currentIndex];
     }
 };
 //this function is called to start pulling your delta values from ntp using the tickRate set in the constructor
@@ -42,6 +45,9 @@ smarterClock.prototype.startTick = function () {
 };
 //this function is used to get your sync time based on average of delta times
 smarterClock.prototype.getTime = function () {
+    return ((new Date()).getTime() + this.getDrift());
+};
+smarterClock.prototype.getDrift = function () {
     //get sum of this.delta array
     var sum = this.delta.reduce(function (a, b) {
         return a + b;
@@ -49,7 +55,7 @@ smarterClock.prototype.getTime = function () {
     //get avg delta of your local time compared to ntp time
     var avg = Math.round(sum / this.delta.length)||0;
     //return your time +/- the avg delta
-    return ((new Date()).getTime() + avg);
+    return avg;
 };
 //this function is used for a one off sync(adds one delta value to the this.delta array)
 smarterClock.prototype.syncTime = function () {
@@ -63,20 +69,29 @@ smarterClock.prototype.getDelta = function (callback) {
         if (err) {
             //shift server if an error happens
             this.shiftServer();
+
+            if(this.delta.length === 0) {
+                setTimeout(() => {
+                    this.getDelta()
+                },1000)
+            }
         } else {
             //get delta value and push into this.delta array
             var tempServerTime = date.getTime();
             var tempLocalTime = (new Date()).getTime();
-            if (this.delta.length === this.limit) {
+            if(tempServerTime <= 0) {
+                this.getDelta()
+                return;
+            }
+
+            if (this.delta.length >= this.limit) {
                 this.delta.shift();
             }
-            var diff = tempServerTime - tempLocalTime;
-            if (Math.abs(diff) < 1000) {
-              this.delta.push(tempServerTime - tempLocalTime);
-            }
+            
+            this.delta.push(tempServerTime - tempLocalTime);
             //if callback passed in return current delta time
             if(callback) {
-                callback(diff)
+            callback(tempServerTime - tempLocalTime)
             }
         }
     }.bind(this))
