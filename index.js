@@ -62,7 +62,6 @@ smarterClock.prototype.getDelta = function (callback) {
     this.client.getNetworkTime(this.currentServer.server, this.currentServer.port, function (err, date) {
         if (err) {
             //shift server if an error happens
-            console.log('Shifting to backup server');
             this.shiftServer();
         } else {
             //get delta value and push into this.delta array
