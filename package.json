@@ -52,7 +52,7 @@
     "url": "https://github.com/SmarterServices/smarterclock/issues"
   },
   "dependencies": {
-    "ntp-client": "^0.5.3"
+    "ntp-client": "sipos-srl/node-ntp-client"
   },
   "description": "store of delta values between ntp time and local time to get an accurate sync time",
   "devDependencies": {},
